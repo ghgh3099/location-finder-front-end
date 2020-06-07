@@ -1,0 +1,19 @@
+<fragment>
+    <div v-if="!showSpinner"
+         v-for="(suggest, index) in suggestions"
+         class="suggestion-item"
+         :class="{active: index == selectedIndex}"
+         @click="clickSuggestion(suggest)"
+         @mouseover="changeSelection(index)"
+         :key="suggest._id">
+        <p>{{ displaySuggestion(suggest) }}</p>
+        <div v-if="suggest.lat && suggest.lng">
+            <i><b>latitude</b>:{{suggest.lat}}</i>,
+            <i><b>longtitude</b>: {{suggest.lng}}</i>
+        </div>
+        <button @click="openInMap(suggest)" class="open-in-map-btn">
+            <i class="fas fa-external-link-alt"></i>
+        </button>
+    </div>
+    <div v-if="showSpinner" class="spinner">Loading</div>
+</fragment>

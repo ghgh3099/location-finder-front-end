@@ -1,0 +1,36 @@
+div.suggestion-item {
+    margin: 1em auto;
+    padding: .5em 1em;
+    width: 75%;
+    max-width: 75%;
+    position: relative;
+    border-bottom: 1px solid black;
+    background: transparent;
+}
+
+div.active {
+    background: lightgrey;
+}
+
+div.suggestion-item > i {
+    font-size: 12px;
+}
+
+div.suggestion-item > button.open-in-map-btn {
+    border: none;
+    outline: none;
+    padding: .5em;
+    border-radius: .25em;
+    position: absolute;
+    right: 1em;
+    top: 0;
+    background: transparent;
+}
+
+div.spinner {
+    margin: 0 auto;
+    padding: 1em;
+    font-size: 20px;
+    width: 75%;
+    text-align: center;
+}

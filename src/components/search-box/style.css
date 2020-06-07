@@ -1,0 +1,10 @@
+input.loc-search-box {
+    display: block;
+    width: 75%;
+    outline: none;
+    padding: 1em 0.5em;
+    border: 1px solid grey;
+    border-radius: 2em;
+    font-size: 16px;
+    margin: 1em auto;
+}

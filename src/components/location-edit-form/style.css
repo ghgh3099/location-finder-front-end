@@ -1,0 +1,32 @@
+form.form-control {
+    margin: 1em auto;
+    width: 80%;
+}
+
+form.form-control div.form-group {
+    display: flex;
+    padding: .5em 0em;
+}
+
+form.form-control div.form-group label.form-control {
+    flex: 1;
+    line-height: 1.5em;
+}
+
+form.form-control div.form-group div.form-control {
+    flex: 2;
+}
+
+form.form-control div.form-group div.form-control > input {
+    width: calc(100% - 1em);
+    font-size: 14px;
+    border: none;
+    padding: 0.5em;
+    border-bottom: 1px solid black;
+}
+
+form.form-control input[type='submit']{
+    border: none;
+    width: 100%;
+    padding: 1em 0;
+}

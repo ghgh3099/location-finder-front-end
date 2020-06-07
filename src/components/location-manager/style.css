@@ -1,0 +1,80 @@
+div.left-side {
+    width: 45vw;
+    max-height: 95vh;
+    float: left;
+}
+div.right-side {
+    max-height: 95vh;
+    width: 50vw;
+    float: right;
+    overflow: hidden;
+}
+
+div.left-side > div.filter-area {
+    display: block;
+    max-height: 5vh;
+    overflow: hidden;
+}
+div.left-side > div.filter-area > input {
+    padding: .5em;
+    font-size: 14px;
+    margin: auto;
+    width: 75%;
+    border: none;
+    outline: none;
+    display: block;
+    border-bottom: 1px solid black;
+}
+
+div.left-side > div.location-area {
+    max-height: 90vh;
+    overflow-x: hidden;
+    overflow-y: overlay;
+}
+
+div.right-side > div.tool-box {
+    padding: 1em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+div.right-side > div.tool-box > button {
+    padding: .5em;
+    border: none;
+    margin-right: 1em;
+    font-size: 14px;
+    width: 20em;
+}
+
+div.location-item {
+    margin: 1em auto;
+    padding: .5em 1em;
+    width: 75%;
+    max-width: 75%;
+    position: relative;
+    border-bottom: 1px solid black;
+    background: transparent;
+}
+
+div.location-item:hover {
+    background: #ddd;
+}
+
+div.location-item.active {
+    background: #aaa;
+}
+
+div.location-item > i {
+    font-size: 12px;
+}
+
+div.location-item > button.open-in-map-btn {
+    border: none;
+    outline: none;
+    padding: .5em;
+    border-radius: .25em;
+    position: absolute;
+    right: 1em;
+    top: 0;
+    background: transparent;
+}

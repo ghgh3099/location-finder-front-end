@@ -1,0 +1,48 @@
+<fragment>
+<div class="left-side">
+    <div class="filter-area">
+        <input type="text" v-model="filterText" @keyup="selectedIndex=-1;selectedLocation=null;" placeholder="Filter location"/>
+    </div>
+    <div class="location-area">
+        <div v-for="(loc, index) in getFilteredList(locations, filterText)" 
+             @click="selectedIndex = index; selectedLocation = loc;"
+             :key="loc._id" class="location-item" :class="{'active': index == selectedIndex}">
+            <p>{{ displayLocation(loc) }}</p>
+            <div v-if="loc.lat && loc.lng">
+                <i><b>latitude</b>:{{loc.lat}}</i>,
+                <i><b>longtitude</b>: {{loc.lng}}</i>
+            </div>
+            <button @click="openInMap(loc)" class="open-in-map-btn">
+                <i class="fas fa-external-link-alt"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="right-side">
+    <div class="tool-box">
+        <button style="background: lightgreen;" @click="addNewLocation">
+            <i class="fas fa-plus"></i>
+            Add
+        </button>
+        <button style="background: lightcoral" @click="deleteCurrentLocation">
+            <i class="fas fa-trash-alt"></i>
+            Delete
+        </button>
+        <button style="background: lightgrey;" @click="importLocations">
+            <i class="fas fa-download"></i>
+            Import
+        </button>
+        <button style="background: lightgrey;" @click="exportLocations">
+            <i class="fas fa-upload"></i>
+            Export
+        </button>
+        <button style="background: lightcoral" @click="deleteAllLocations">
+            <i class="fas fa-trash-alt"></i>
+            ALL
+        </button>
+    </div>
+    <div class="editor-area" v-if="selectedLocation || newLocation">
+        <location-edit-form :title="selectedLocation ? 'Update Location':'New Location'" :location="selectedLocation || newLocation" :on-save-location="saveLocation"></location-edit-form>
+    </div>
+</div>
+</fragment>

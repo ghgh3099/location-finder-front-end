@@ -1,0 +1,13 @@
+<fragment>
+<input
+    type='text'
+    v-model="searchString"
+    @keyup="onEnterLocation"
+    placeholder="Type Location to Search"
+    class="loc-search-box"/>
+<suggestion-list
+    :on-component-mounted="onSuggestionAreaMounted"
+    :on-click-suggest="onSuggestionClick"
+    :search-string="searchString">
+</suggestion-list>
+</fragment>
