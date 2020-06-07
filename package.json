@@ -7,7 +7,10 @@
     "watch": "yarn run build --info-verbosity verbose",
     "build": "export NODE_ENV=dev && webpack --config webpack.conf.js",
     "prod": "export NODE_ENV=prod && webpack --config webpack.conf.js",
-    "serve": "export NODE_ENV=dev && webpack-dev-server --color --config webpack.conf.js"
+    "serve": "export NODE_ENV=dev && webpack-dev-server --color --config webpack.conf.js",
+    "build:win": "set NODE_ENV=dev && webpack --config webpack.conf.js",
+    "prod:win": "set NODE_ENV=prod && webpack --config webpack.conf.js",
+    "serve:win": "set NODE_ENV=dev && webpack-dev-server --color --config webpack.conf.js"
   },
   "keywords": [],
   "author": "",
