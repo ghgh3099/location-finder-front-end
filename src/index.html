@@ -40,6 +40,16 @@
                 border-bottom: 2px solid green;
                 background: #ddd;
             }
+            #get-direciton-btn {
+                width: 90%;;
+                padding: 1em;
+                background-color: lightgreen;
+                border: none;
+                margin: 1em auto;
+                display: block;
+                font-family: sans-serif;
+                font-size: 16px;
+            }
         </style>
     </head>
     <body>
@@ -70,7 +80,20 @@
             <div v-if="show=='manager'">
                 <location-manager></location-manager>
             </div>
+
+            <modal name="location-direction" @before-open="beforeOpenDirection" height="auto">
+                <div style="text-align: center; font-family: sans-serif;">
+                    <h2>Get Direction</h2>
+                </div>
+                <input type="text" class="loc-search-box" placeholder="Current Location" :value="directionOrigin"/>
+                <div style="text-align: center;">
+                    <i class="fa fa-arrow-down"></i>
+                </div>
+                <input type="text" class="loc-search-box" placeholder="Destination Location" :value="directionDestination"/>
+                <div>
+                    <button id="get-direciton-btn" @click="openDirection">Get Direction</button>
+                </div>
+            </modal>
         </div>
     </body>
 </html>
-

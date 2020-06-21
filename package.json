@@ -21,7 +21,8 @@
     "toastr": "^2.1.4",
     "url-loader": "^4.1.0",
     "vue": "^2.6.11",
-    "vue-fragment": "^1.5.1"
+    "vue-fragment": "^1.5.1",
+    "vue-js-modal": "^2.0.0-rc.3"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",

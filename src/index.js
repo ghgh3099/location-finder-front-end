@@ -4,6 +4,7 @@ import _ from "lodash";
 import api from "./services/api";
 import components from "./components";
 import toastr from "toastr/build/toastr.min";
+import VModal from 'vue-js-modal'
 import "!style-loader!css-loader!toastr/build/toastr.min.css";
 import "!style-loader!css-loader!@fortawesome/fontawesome-free/css/all.css";
 
@@ -25,6 +26,7 @@ import "!style-loader!css-loader!@fortawesome/fontawesome-free/css/all.css";
         "hideMethod": "fadeOut"
     }
     Vue.use(Plugin);
+    Vue.use(VModal)
     const googleApiKey = (await api.getGoogleAPIKey()).data;
     console.log(googleApiKey);
 
@@ -34,7 +36,9 @@ import "!style-loader!css-loader!@fortawesome/fontawesome-free/css/all.css";
         data: {
             googleMapEmbeddedURL: `https://www.google.com/maps/embed/v1/place?q=Ha+Noi,+Viet+Nam&key=${googleApiKey}`,
             selectedLocation: null,
-            show: 'dashboard'
+            show: 'dashboard',
+            directionDestination: null,
+            directionOrigin: null
         },
         methods: {
             clearSearch: () => {},
@@ -57,6 +61,25 @@ import "!style-loader!css-loader!@fortawesome/fontawesome-free/css/all.css";
             },
             onSaveLocation: function(newLocation) {
                 this.openMapResult(newLocation);
+            },
+            beforeOpenDirection: function(event) {
+                navigator.geolocation.getCurrentPosition(pos => {
+                    console.log(pos);
+                    this.$nextTick(() => {
+                        this.directionOrigin = `${pos.coords.latitude}, ${pos.coords.longitude}`;
+                    })
+                })
+                this.directionDestination = event.params.destLoc;
+            },
+            openDirection: function() {
+                if (!this.directionOrigin || !this.directionDestination) {
+                    toastr.error("Please enter origin direction or destination direction");
+                    return;
+                }
+                const saddr = this.directionOrigin.split(" ").join("+");
+                const daddr = this.directionDestination.split(" ").join("+");
+                const url = `https://maps.google.com?saddr=${saddr}&daddr=${daddr}`;
+                window.open(url, '_blank');
             }
         }
     })

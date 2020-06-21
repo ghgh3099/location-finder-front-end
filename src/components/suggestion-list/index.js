@@ -53,6 +53,9 @@ const component = {
             this.selectedIndex = index;
         },
         openInMap: function(suggest) {
+            const dest = [suggest.Address, suggest.City, suggest.Country].join(", ");
+            this.$modal.show("location-direction", {destLoc: dest});
+            return ;
             let place = suggest.Address.split(" ").join("+");
             place += ",+" + suggest.City.split(" ").join("+");
             place += ",+" + suggest.Country.split(" ").join("+");
